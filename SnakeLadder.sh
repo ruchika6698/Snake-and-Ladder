@@ -7,26 +7,27 @@ NOPLAY=1
 WINNINGPOSITION=100
 SNAKE=3
 LADDER=2
+Position=0
 
 Number=$(( RANDOM%6 + 1 ))
 echo $Number
 
-while [[ position -le 100 ]]
+CurrentPosition=$START_POSITION
+
+while [[ CurrentPosition -le $WINNINGPOSITION ]]
 do
 	Random=$(( RANDOM%3 + 1 ))
-	currentposition=$START_POSITION
 	if [[ $Random -eq 1 ]]
 	then
-		CurrentPosition=$currentposition
+		CurrentPosition=$CurrentPosition
 	elif [[ $Random -eq 2 ]]
 	then
-		CurrentPosition=$(( $currentposition+$Number ))
+		CurrentPosition=$(( $CurrentPosition+$Number ))
 	elif [[ $Random -eq 3 ]]
 	then
-		CurrentPosition=$(( $currentposition-$Number ))
+		CurrentPosition=$(( $CurrentPosition-$Number ))
 	else
 	echo "wrong input"
 	fi
 done
-echo $CurrentPosition
-
+echo "Player has reached the winning goal: " $CurrentPosition
